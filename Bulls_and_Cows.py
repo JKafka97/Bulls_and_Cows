@@ -1,7 +1,9 @@
 import random
 
-print("Hi there!\nI've generated a random 4 digit number for you.\nLet's play a bulls and cows game.")
-print("Enter a number")
+print('''Hi there!
+I've generated a random 4 digit number for you.
+Let's play a bulls and cows game. 
+Enter a number''')
 
 #random_number
 number = set()
@@ -30,13 +32,13 @@ while True:
     if bulls_cows["bulls"] == 4 and bulls_cows["cows"] == 4:
         print("Correct, you've guessed the right number in {} guesses!".format(guess))
         break
-    else:
-        if bulls_cows["bulls"] == 1 and bulls_cows["cows"] == 1:
-            print("{} bull, {} cow".format(bulls_cows["bulls"], bulls_cows["cows"]))
-        elif bulls_cows["bulls"] == 1:
-            print("{} bull, {} cows".format(bulls_cows["bulls"], bulls_cows["cows"]))
-        elif bulls_cows["cows"] == 1:
-            print("{} bulls, {} cow".format(bulls_cows["bulls"], bulls_cows["cows"]))
-        else:
-            print("{} bulls, {} cows".format(bulls_cows["bulls"], bulls_cows["cows"]))
+    bull_s, cow_s = "s", "s"
+    template = "{} bull{}, {} cow{}"
+    if bulls_cows["bulls"] == 1 and bulls_cows["cows"] == 1:
+        bull_s, cow_s = "", ""
+    if bulls_cows["bulls"] == 1:
+        bull_s = ""
+    if bulls_cows["cows"] == 1:
+        cow_s = ""
+    print(template.format(bulls_cows["bulls"], bull_s, bulls_cows["cows"], cow_s))
     guess += 1
