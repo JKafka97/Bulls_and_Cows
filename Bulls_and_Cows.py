@@ -19,7 +19,7 @@ guess = 1
 while True:
     bulls_cows = {"bulls": 0, "cows": 0}
     input_number = input()
-    if len(input_number) != 4:
+    if len(input_number) != 4 or (list(input_number)): #rozděleno ale neprohledano
         print("Your number has to be four-digit")
         continue
     n = 0
