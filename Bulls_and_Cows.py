@@ -5,7 +5,8 @@ I've generated a random 4 digit number for you.
 Let's play a bulls and cows game. 
 Enter a number''')
 
-#random_number
+# random_number
+
 number = set()
 while len(number) < 4:
     number.add(random.randrange(1, 10))
@@ -14,13 +15,14 @@ for num in number:
     random_number += str(num)
 print(random_number)
 
-#game_loop
+# game_loop
+
 guess = 1
 while True:
     bulls_cows = {"bulls": 0, "cows": 0}
     input_number = input()
-    if len(input_number) != 4 or (list(input_number)):#rozděleno ale neprohledano
-        print("Your number has to be four-digit")
+    if len(input_number) != 4 or not input_number.isdigit():
+        print("Your number has to be four-digit number")
         continue
     n = 0
     for bulls in random_number:
