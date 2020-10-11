@@ -13,7 +13,6 @@ while len(number) < 4:
 random_number = ""
 for num in number:
     random_number += str(num)
-print(random_number)
 
 # game_loop
 
