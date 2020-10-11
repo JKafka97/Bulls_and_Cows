@@ -32,7 +32,11 @@ while True:
             bulls_cows["cows"] += 1
         n += 1
     if bulls_cows["bulls"] == 4 and bulls_cows["cows"] == 4:
-        print("Correct, you've guessed the right number in {} guesses!".format(guess))
+        if guess == 1:
+            multi = ""
+        else:
+            multi = "es"
+        print("Correct, you've guessed the right number in {} guess{}!".format(guess, multi))
         break
     bull_s, cow_s = "s", "s"
     template = "{} bull{}, {} cow{}"
