@@ -37,6 +37,15 @@ while True:
         else:
             multi = "es"
         print("Correct, you've guessed the right number in {} guess{}!".format(guess, multi))
+        file = open('score.txt', 'a+')
+        file.write("{},".format(str(guess)))
+        file.seek(0)
+        score = ((file.read()).strip(",")).split(",")
+        my_sum = 0
+        for numbers in score:
+            my_sum += int(numbers)
+        average = my_sum / len(score)
+        print("Average score is {}".format(average))
         break
     bull_s, cow_s = "s", "s"
     template = "{} bull{}, {} cow{}"
