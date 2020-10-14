@@ -5,14 +5,18 @@ I've generated a random 4 digit number for you.
 Let's play a bulls and cows game. 
 Enter a number''')
 
+
 # random_number
 
-number = set()
-while len(number) < 4:
-    number.add(random.randrange(1, 10))
-random_number = ""
-for num in number:
-    random_number += str(num)
+def random_number():
+    number = set()
+    while len(number) < 4:
+        number.add(random.randrange(1, 10))
+    my_random_number = ""
+    for num in number:
+        my_random_number += str(num)
+    return my_random_number
+
 
 # game_loop
 
@@ -24,7 +28,7 @@ while True:
         print("Your number has to be four-digit number")
         continue
     n = 0
-    for bulls in random_number:
+    for bulls in random_number():
         if bulls == input_number[n]:
             bulls_cows["bulls"] += 1
         if bulls in input_number:
