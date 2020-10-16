@@ -23,7 +23,7 @@ def input_control():
     if len(my_input_number) == 4 and my_input_number.isdigit():
         return my_input_number
     else:
-        return print("Your number has to be four-digit number")
+        quit("Your number has to be four-digit number")
 
 
 def bulls_cows_control():
@@ -84,10 +84,10 @@ def ans_write(guess):
 
 def result():
     greets()
-    bulls_cows_control()
-    guess_multiple(guess=bulls_cows_control())
-    correct_ans(guess=bulls_cows_control(), multi=guess_multiple(guess=bulls_cows_control()))
-    ans_write(guess=bulls_cows_control())
+    my_ans = bulls_cows_control()
+    guess_multiple(guess=my_ans)
+    correct_ans(guess=my_ans, multi=guess_multiple(guess=my_ans))
+    ans_write(guess=my_ans)
 
 
 result()
