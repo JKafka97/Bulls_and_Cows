@@ -29,7 +29,6 @@ def input_control():
 def bulls_cows_control():
     guess = 0
     my_random_number = random_number()
-    print(my_random_number)
     while True:
         bulls_cows = {"bulls": 0, "cows": 0}
         n = 0
@@ -79,7 +78,7 @@ def ans_write(guess):
     for numbers in score:
         my_sum += int(numbers)
     average = my_sum / len(score)
-    print("Average score is {}".format(average))
+    print("Average score is {}".format(round(average)))
 
 
 def result():
