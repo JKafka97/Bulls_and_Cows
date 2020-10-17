@@ -10,10 +10,10 @@ Enter a number''')
 
 def random_number():
     number = set()
-    while len(number) < 3:
-        number.add(random.randrange(0, 10))
-    while len(number) < 4:
+    while len(number) < 1:
         number.add(random.randrange(1, 10))
+    while len(number) < 4:
+        number.add(random.randrange(0, 10))
     complete_random_number = ""
     for num in number:
         complete_random_number += str(num)
