@@ -10,6 +10,8 @@ Enter a number''')
 
 def random_number():
     number = set()
+    while len(number) < 3:
+        number.add(random.randrange(0, 10))
     while len(number) < 4:
         number.add(random.randrange(1, 10))
     complete_random_number = ""
@@ -19,11 +21,12 @@ def random_number():
 
 
 def input_control():
-    my_input_number = input()
-    if len(my_input_number) == 4 and my_input_number.isdigit():
-        return my_input_number
-    else:
-        quit("Your number has to be four-digit number")
+    while True:
+        my_input_number = input()
+        if len(my_input_number) == 4 and my_input_number.isdigit():
+            return my_input_number
+        else:
+            print("Your number has to be four-digit number")
 
 
 def bulls_cows_control():
@@ -31,25 +34,21 @@ def bulls_cows_control():
     my_random_number = random_number()
     while True:
         bulls_cows = {"bulls": 0, "cows": 0}
-        n = 0
         my_input_number = input_control()
-        for bulls in my_random_number:
-            if bulls == my_input_number[n]:
+        for index, value in enumerate(my_random_number):
+            if value == my_input_number[index]:
                 bulls_cows["bulls"] += 1
-            if bulls in my_input_number:
+            elif value in my_input_number:
                 bulls_cows["cows"] += 1
-            n += 1
         guess += 1
-        a, b = bulls_multiple(bulls_cows)
-        if bulls_cows["bulls"] == 4 and bulls_cows["cows"] == 4:
+        bull_s, cow_s = bulls_multiple(bulls_cows)
+        if bulls_cows["bulls"] == 4:
             return guess
-        print("{} bull{}, {} cow{}".format(bulls_cows["bulls"], a, bulls_cows["cows"], b))
+        print("{} bull{}, {} cow{}".format(bulls_cows["bulls"], bull_s, bulls_cows["cows"], cow_s))
 
 
 def bulls_multiple(bulls_cows):
     bull_s, cow_s = "s", "s"
-    if bulls_cows["bulls"] == 1 and bulls_cows["cows"] == 1:
-        bull_s, cow_s = "", ""
     if bulls_cows["bulls"] == 1:
         bull_s = ""
     if bulls_cows["cows"] == 1:
@@ -58,14 +57,12 @@ def bulls_multiple(bulls_cows):
 
 
 def guess_multiple(guess):
-    if guess == 1:
-        multi = ""
-    else:
-        multi = "es"
+    multi = "" if guess == 1 else "es"
     return multi
 
 
-def correct_ans(guess, multi):
+def correct_ans(guess):
+    multi = guess_multiple(guess)
     print("Correct, you've guessed the right number in {} guess{}!".format(guess, multi))
 
 
@@ -81,12 +78,12 @@ def ans_write(guess):
     print("Average score is {}".format(round(average)))
 
 
-def result():
+def calculate_result():
     greets()
     my_ans = bulls_cows_control()
     guess_multiple(guess=my_ans)
-    correct_ans(guess=my_ans, multi=guess_multiple(guess=my_ans))
+    correct_ans(guess=my_ans)
     ans_write(guess=my_ans)
 
 
-result()
+calculate_result()
